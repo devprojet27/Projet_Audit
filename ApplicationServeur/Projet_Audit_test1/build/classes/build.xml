@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="build">
+	<path id="build.classpath">
+		<pathelement location="classes"/>
+	</path>
+	<target name="init">
+		<mkdir dir="classes"/>
+	</target>
+	<target name="clean">
+		<delete dir="classes"/>
+	</target>
+	<target depends="init" name="build">
+		<javac srcdir="." destdir="classes" source="1.5" target="1.5" fork="yes">
+			<classpath refid="build.classpath"/>
+			<include name="Fiche.java"/>
+			<include name="Auditeur.java"/>
+			<include name="Agent.java"/>
+			<include name="Section.java"/>
+			<include name="Champ.java"/>
+			<include name="Valeurs.java"/>
+			<include name="Audit.java"/>
+			<include name="Modèle.java"/>
+			<include name="Poste.java"/>
+			<include name="Personne.java"/>
+			<include name="Administrateur.java"/>
+		</javac>
+	</target>
+</project>
