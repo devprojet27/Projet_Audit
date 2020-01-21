@@ -21,3 +21,8 @@
 
         return code;
     }
+
+
+public void setEncodedMdp(String mdp) throws NoSuchAlgorithmException {
+        this.mdp = mdp;
+    }
