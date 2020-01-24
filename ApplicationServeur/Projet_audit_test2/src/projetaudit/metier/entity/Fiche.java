@@ -4,18 +4,23 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
 @Entity
-public class Fiche implements Serializable{
+public class Fiche implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     @Id
-	private long id;
-    @Temporal(javax.persistence.TemporalType.DATE)  
-        private Date date;
+    private long id;
+
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date date;
     @OneToOne
-        public Poste poste;
+    public Poste poste;
     @OneToOne
     private Modele modele;
 
@@ -101,7 +106,5 @@ public class Fiche implements Serializable{
     public void setId(long id) {
         this.id = id;
     }
-    
-    
-	
+
 }

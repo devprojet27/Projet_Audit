@@ -3,21 +3,25 @@ package projetaudit.metier.entity;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Poste implements Serializable{
-	private String fonction;
-	private String activité;
-	private String emplacement;
+public class Poste implements Serializable {
+   private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
+    private String fonction;
+    private String activité;
+    private String emplacement;
+
 
     public Poste() {
     }
-	
 
-    public Poste(String fonction, String activité, String emplacement ) {
+    public Poste(String fonction, String activité, String emplacement) {
         this.fonction = fonction;
         this.activité = activité;
         this.emplacement = emplacement;
@@ -77,8 +81,7 @@ public class Poste implements Serializable{
         if (!Objects.equals(this.emplacement, other.emplacement)) {
             return false;
         }
-      
-        
+
         return true;
     }
 
@@ -95,5 +98,4 @@ public class Poste implements Serializable{
         this.ID = ID;
     }
 
-	
 }

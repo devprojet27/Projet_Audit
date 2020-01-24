@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 @DiscriminatorValue("Agent")
 public class Agent extends Personne implements Serializable {
 
+     private static final long serialVersionUID = 1L;
     @ManyToOne
     public Audit audit;
 

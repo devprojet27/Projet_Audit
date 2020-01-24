@@ -6,18 +6,19 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Valeurs implements Serializable{
-        @Id
-	private long id;
-	private String valeur;
+public class Valeurs implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    private long id;
+    private String valeur;
 
     public Valeurs() {
     }
-	
 
     public Valeurs(String valeur) {
         this.valeur = valeur;
-        
+
     }
 
     public long getId() {
@@ -41,7 +42,7 @@ public class Valeurs implements Serializable{
         int hash = 7;
         hash = 37 * hash + (int) (this.id ^ (this.id >>> 32));
         hash = 37 * hash + Objects.hashCode(this.valeur);
-     
+
         return hash;
     }
 
@@ -62,7 +63,7 @@ public class Valeurs implements Serializable{
         }
         if (!Objects.equals(this.valeur, other.valeur)) {
             return false;
-        
+
         }
         return true;
     }
@@ -71,6 +72,5 @@ public class Valeurs implements Serializable{
     public String toString() {
         return "Valeurs{" + "id=" + id + ", valeur=" + valeur + '}';
     }
-        
-        
+
 }

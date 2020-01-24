@@ -4,12 +4,18 @@ import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
 @DiscriminatorValue("Auditeur")
 public class Auditeur extends Personne implements Serializable{
+
+    
+    private static final long serialVersionUID = 1L;
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     @OneToOne
     public Audit audit;

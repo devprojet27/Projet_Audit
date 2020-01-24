@@ -4,22 +4,29 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import projetaudit.metier.entity.Section;
 
 @Entity
 
-public class Modele implements Serializable  {
-        @Id
-	private long id;
-        
-	private String type;
-        
+public class Modele implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    private long id;
+
+    private String type;
+
     @ManyToOne
-        private Champ champ;
-        private int niveau;
-        private Section section;
+    private Champ champ;
+
+    private int niveau;
+
+    @ManyToOne
+    private Section section;
 
     public Modele() {
     }
@@ -116,5 +123,5 @@ public class Modele implements Serializable  {
     public String toString() {
         return "Modele{" + "id=" + id + ", type=" + type + ", section=" + section + ", champ=" + champ + ", niveau=" + niveau + '}';
     }
-        
+
 }

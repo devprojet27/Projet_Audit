@@ -1,19 +1,31 @@
 package projetaudit.metier.entity;
 
 import java.io.Serializable;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
 
 @Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@DiscriminatorColumn(name = "disc", discriminatorType = DiscriminatorType.STRING)
 @DiscriminatorValue("Personne")
 public class Personne implements Serializable{
-
+    
+    private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String nom;
     private String prenom;
@@ -66,13 +78,43 @@ public class Personne implements Serializable{
     public void setLogin(String login) {
         this.login = login;
     }
+ private String codeMD5(String msg) throws NoSuchAlgorithmException {
+        String code = "";
+        byte[] b;
+        MessageDigest md;
+        try {
+            md = MessageDigest.getInstance("MD5");
+            b = md.digest(msg.getBytes());
+            for (int i = 0; i < b.length; i++) {
+                int x = b[i];
 
+                if (x < 0) {
+                    x += 256;
+                }
+
+                String s = String.format("%02x", x);
+                code += s;
+            }
+        } catch (NoSuchAlgorithmException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return code;
+    }
+
+    public boolean isValid(String pswrd) throws NoSuchAlgorithmException {
+        return this.password.equals(this.codeMD5(pswrd));
+    }
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+     public void setPassword(String pswrd) throws NoSuchAlgorithmException {
+        this.password = this.codeMD5(pswrd);
+    }
+
+    public void setEncodedMdp(String pswrd) throws NoSuchAlgorithmException {
+        this.password = pswrd;
     }
 
     public Poste getPoste() {

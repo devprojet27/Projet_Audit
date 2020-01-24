@@ -1,10 +1,22 @@
 package projetaudit.metier.entity;
 
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class Section {
-	private String nom;
-        private Champ champ;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    private Long id;
+    private String nom;
+    private Champ champ;
+
+    public Section() {
+    }
 
     public Section(String nom, Champ champ) {
         this.nom = nom;
@@ -56,10 +68,17 @@ public class Section {
         return true;
     }
 
-
     @Override
     public String toString() {
-        return "Section{" + "nom=" + nom +" "+champ+ '}';
+        return "Section{" + "nom=" + nom + " " + champ + '}';
     }
-  
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 }
