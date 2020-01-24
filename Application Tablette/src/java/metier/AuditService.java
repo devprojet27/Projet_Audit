@@ -5,10 +5,19 @@
  */
 package metier;
 
+import entity.Agent;
+import entity.Audit;
+import entity.Auditeur;
+import java.util.List;
+import lml.persistence.CrudService;
+
 /**
  *
  * @author flori
  */
 public interface AuditService extends CrudService<Audit> {
 
+    public List<Audit> getByAuditeur(Auditeur auditeur) throws Exception;
+
+    public List<Audit> getByAgent(Agent agent) throws Exception;
 }

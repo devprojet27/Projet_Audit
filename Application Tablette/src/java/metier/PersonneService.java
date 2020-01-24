@@ -28,5 +28,5 @@ public interface PersonneService extends CrudService<Personne> {
 
     public List<Personne> getByAuditeur(Auditeur auditeur) throws Exception;
 
-    public Personne[] sort() throws Exception;
+   // public Personne[] sort() throws Exception;
 }

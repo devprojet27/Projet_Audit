@@ -11,13 +11,13 @@ import java.util.List;
 
 import lml.rest.client.ClientRest;
 
-import metier.entity.auditeur;
-import lml.snir.controleacces.metier.entity.Administrateur;
-import lml.snir.controleacces.metier.entity.Personne;
+import entity.Auditeur;
+import entity.Administrateur;
+import entity.Fiche;
+import entity.Personne;
 
-import lml.snir.controleacces.metier.sort.ComparatorByAge;
-import lml.snir.controleacces.metier.sort.Sort;
-
+//import lml.snir.controleacces.metier.sort.ComparatorByAge;
+//import lml.snir.controleacces.metier.sort.Sort;
 /**
  *
  * @author flori
@@ -25,7 +25,7 @@ import lml.snir.controleacces.metier.sort.Sort;
 public class PersonneServiceImpl extends ClientRest<Personne> implements PersonneService {
 
     @Override
-    public Administrateur getByLogin(String login) {
+    public Administrateur getByLogin(String login) throws Exception {
         super.setPath("getByLogin/" + login);
         return (Administrateur) super.getEntity();
     }
@@ -37,24 +37,23 @@ public class PersonneServiceImpl extends ClientRest<Personne> implements Personn
 
     public PersonneServiceImpl() {
         super.init("PersonneService", new RestServerLocalConfiguration());
-
-        List<Class> classes = new ArrayList<>();
-        classes.add(Administrateur.class);
-        super.polymorphicInit(classes);
+        //List<Class> classes = new ArrayList<>();
+        //List<Class> classes = new ArrayList<>();
+        //classes.add(Administrateur.class);
+        //super.polymorphicInit(classes);
     }
 
-    @Override
-    public Administrateur getByLogin(String login) throws Exception {
-        super.setPath("getByUtilisateur/" + login);
-        return (Administrateur) super.getEntity();
-    }
+    /* @Override
+     public Administrateur getByLogin(String login) throws Exception {
+     super.setPath("getByUtilisateur/" + login);
+     return (Administrateur) super.getEntity();
+     }
 
-    @Override
-    public List<Personne> getByNom(String nom) throws Exception {
-        super.setPath("getByNom/" + nom);
-        return super.getEntitys();
-    }
-
+     @Override
+     public List<Personne> getByNom(String nom) throws Exception {
+     super.setPath("getByNom/" + nom);
+     return super.getEntitys();
+     }*/
     @Override
     public Personne add(Personne t) throws Exception {
         super.setPath("");
@@ -97,17 +96,27 @@ public class PersonneServiceImpl extends ClientRest<Personne> implements Personn
         return super.getEntitys();
     }
 
+    /* @Override
+     public Personne[] sort() throws Exception {
+     Personne[] personnes = this.getAll().toArray(new Personne[0]);
+
+     //Arrays.sort(personnes);
+     ComparatorByAge cmp = new ComparatorByAge();
+     Sort trieuse = MetierFactory.getSortService();
+     trieuse.sort(personnes, cmp);
+
+     return personnes;
+
+     }*/
     @Override
-    public Personne[] sort() throws Exception {
-        Personne[] personnes = this.getAll().toArray(new Personne[0]);
-
-        //Arrays.sort(personnes);
-        ComparatorByAge cmp = new ComparatorByAge();
-        Sort trieuse = MetierFactory.getSortService();
-        trieuse.sort(personnes, cmp);
-
-        return personnes;
-
+    public Personne getByFiche(Fiche fiche) throws Exception {
+        super.setPath("getByFiche/" + fiche);
+        return super.getEntity();
     }
 
+    @Override
+    public List<Personne> getByAuditeur(Auditeur auditeur) throws Exception {
+        super.setPath("getByAuditeur/" + auditeur);
+        return super.getEntitys();
+    }
 }
