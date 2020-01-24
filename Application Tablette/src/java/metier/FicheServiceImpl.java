@@ -6,6 +6,8 @@
 package metier;
 
 import lml.rest.client.ClientRest;
+import metier.FicheService;
+import entity.Fiche;
 
 /**
  *
