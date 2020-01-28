@@ -5,9 +5,11 @@
  */
 package metier;
 
-import entity.Agent;
-import entity.Audit;
-import entity.Auditeur;
+import metier.entity.Agent;
+import metier.entity.Audit;
+import metier.entity.Auditeur;
+import metier.entity.Poste;
+import java.util.Date;
 import java.util.List;
 import lml.persistence.CrudService;
 
@@ -20,4 +22,8 @@ public interface AuditService extends CrudService<Audit> {
     public List<Audit> getByAuditeur(Auditeur auditeur) throws Exception;
 
     public List<Audit> getByAgent(Agent agent) throws Exception;
+
+    public List<Audit> getByDate(Date date) throws Exception;
+
+    public List<Audit> getByPoste(Poste poste) throws Exception;
 }

@@ -5,64 +5,55 @@
  */
 package metier;
 
-import lml.rest.client.ClientRest;
-import metier.entity.Fiche;
 import metier.entity.Modele;
-import metier.entity.Poste;
-import java.util.Date;
 import java.util.List;
+import lml.rest.client.ClientRest;
 
 /**
  *
  * @author flori
  */
-public class FicheServiceImpl extends ClientRest<Fiche> implements FicheService {
+public class ModeleServiceImpl extends ClientRest<Modele> implements ModeleService {
 
     @Override
-    public List<Fiche> getByDate(Date date) throws Exception {
-        super.setPath("getByDate/" + date);
+    public List<Modele> getByType(String type) throws Exception {
+        super.setPath("getByType/" + type);
         return super.getEntitys();
     }
 
     @Override
-    public List<Fiche> getByPoste(Poste poste) throws Exception {
-        super.setPath("getByPoste/" + poste);
+    public List<Modele> getByNiveau(int niveau) throws Exception {
+        super.setPath("getByNiveau/" + niveau);
         return super.getEntitys();
     }
 
     @Override
-    public List<Fiche> getByModele(Modele modele) throws Exception {
-        super.setPath("getByModele" + modele);
-        return super.getEntitys();
-    }
-
-    @Override
-    public Fiche getByTitre(String titre) throws Exception {
-        super.setPath("getByTitre" + titre);
+    public Modele getByTitre(String titre) throws Exception {
+        super.setPath("getByTitre/" + titre);
         return super.getEntity();
     }
 
     @Override
-    public Fiche add(Fiche t) throws Exception {
+    public Modele add(Modele t) throws Exception {
         super.setPath("");
         return super.addEntity(t);
     }
 
     @Override
-    public void remove(Fiche t) throws Exception {
+    public void remove(Modele t) throws Exception {
         super.setPath("");
         super.removeEntity(t);
     }
 
     @Override
-    public void update(Fiche t) throws Exception {
+    public void update(Modele t) throws Exception {
         super.setPath("");
         super.updateEntity(t);
     }
 
     @Override
-    public Fiche getById(Long l) throws Exception {
-        super.setPath("" + l);
+    public Modele getById(Long l) throws Exception {
+        super.setPath("getById/" + l);
         return super.getEntity();
     }
 
@@ -73,13 +64,13 @@ public class FicheServiceImpl extends ClientRest<Fiche> implements FicheService 
     }
 
     @Override
-    public List<Fiche> getAll() throws Exception {
+    public List<Modele> getAll() throws Exception {
         super.setPath("");
         return super.getEntitys();
     }
 
     @Override
-    public List<Fiche> getAll(int i, int i1) throws Exception {
+    public List<Modele> getAll(int i, int i1) throws Exception {
         super.setPath("" + i + "/" + i1);
         return super.getEntitys();
     }

@@ -5,9 +5,9 @@
  */
 package metier;
 
-import entity.Fiche;
-import entity.Modele;
-import entity.Poste;
+import metier.entity.Fiche;
+import metier.entity.Modele;
+import metier.entity.Poste;
 import java.util.Date;
 import java.util.List;
 import lml.persistence.CrudService;

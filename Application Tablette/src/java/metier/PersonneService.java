@@ -9,10 +9,10 @@ import java.util.List;
 
 import lml.persistence.CrudService;
 
-import entity.Personne;
-import entity.Administrateur;
-import entity.Auditeur;
-import entity.Fiche;
+import metier.entity.Personne;
+import metier.entity.Administrateur;
+import metier.entity.Auditeur;
+import metier.entity.Fiche;
 
 /**
  *
@@ -20,7 +20,7 @@ import entity.Fiche;
  */
 public interface PersonneService extends CrudService<Personne> {
 
-    public Administrateur getByLogin(String login) throws Exception;
+    public Personne getByLogin(String login) throws Exception;
 
     public List<Personne> getByNom(String nom) throws Exception;
 
@@ -28,5 +28,5 @@ public interface PersonneService extends CrudService<Personne> {
 
     public List<Personne> getByAuditeur(Auditeur auditeur) throws Exception;
 
-   // public Personne[] sort() throws Exception;
+    //public Personne[] sort() throws Exception;
 }

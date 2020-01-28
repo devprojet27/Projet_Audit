@@ -33,6 +33,5 @@ public class MetierFactory {
      }*/
 
     private MetierFactory() {
-
     }
 }

@@ -5,9 +5,11 @@
  */
 package metier;
 
-import entity.Agent;
-import entity.Audit;
-import entity.Auditeur;
+import metier.entity.Agent;
+import metier.entity.Audit;
+import metier.entity.Auditeur;
+import metier.entity.Poste;
+import java.util.Date;
 import lml.rest.client.ClientRest;
 import java.util.List;
 
@@ -69,6 +71,18 @@ public class AuditServiceImpl extends ClientRest<Audit> implements AuditService 
     @Override
     public List<Audit> getAll(int i, int i1) throws Exception {
         super.setPath("" + i + "/" + i1);
+        return super.getEntitys();
+    }
+
+    @Override
+    public List<Audit> getByDate(Date date) throws Exception {
+        super.setPath("getbyDate/" + date);
+        return super.getEntitys();
+    }
+
+    @Override
+    public List<Audit> getByPoste(Poste poste) throws Exception {
+        super.setPath("getbyPoste/" + poste);
         return super.getEntitys();
     }
 

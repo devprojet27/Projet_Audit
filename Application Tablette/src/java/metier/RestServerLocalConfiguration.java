@@ -16,7 +16,7 @@ import lml.rest.client.RestServerConfig;
  */
 public class RestServerLocalConfiguration extends RestServerConfig {
 
-    private static String url = "http://localhost:9999";//Adresse ip serveur
+    private static String url = "http://localhost:9999";//Adresse ip serveur 172.16.79
 
     static {
         FileInputStream input = null;
