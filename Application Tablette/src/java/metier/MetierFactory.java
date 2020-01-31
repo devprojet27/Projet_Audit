@@ -5,6 +5,9 @@
  */
 package metier;
 
+import metier.sort.InsertionOptimisedSort;
+import metier.sort.Sort;
+
 /**
  *
  * @author flori
@@ -26,11 +29,11 @@ public class MetierFactory {
     public static FicheService getFicheService() {
         return ficheService;
     }
-    /*private static final Sort sortSrv = new InsertionOptimisedSort();
+    private static final Sort sortSrv = new InsertionOptimisedSort();
 
-     public static Sort getSortService() {
-     return sortSrv;
-     }*/
+    public static Sort getSortService() {
+        return sortSrv;
+    }
 
     private MetierFactory() {
     }
