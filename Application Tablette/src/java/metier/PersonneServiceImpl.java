@@ -5,19 +5,17 @@
  */
 package metier;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
 import lml.rest.client.ClientRest;
-
 import metier.entity.Auditeur;
-import metier.entity.Administrateur;
-import metier.entity.Fiche;
-import metier.entity.Personne;
+import metier.entity.Audit;
 
-//import metier.sort.ComparatorByAge;
+import metier.entity.Personne;
+import metier.entity.Poste;
+
+//import metier.sort.ComparatorByDisc;
 //import lml.snir.controleacces.metier.sort.Sort;
+//import metier.entity.Fiche;
 /**
  *
  * @author flori
@@ -74,21 +72,6 @@ public class PersonneServiceImpl extends ClientRest<Personne> implements Personn
         return super.getEntitys();
     }
 
-    /*@Override
-     public Personne[] sort() throws Exception {
-     Personne[] personnes = this.getAll().toArray(new Personne[0]);
-     //Arrays.sort(personnes);
-     //Comparat cmp = new ComparatorByAge();
-     sort trieuse = MetierFactory.getSortService();
-     trieuse.sort(personnes, cmp);
-     return personnes;
-     }*/
-    @Override
-    public Personne getByFiche(Fiche fiche) throws Exception {
-        super.setPath("getByFiche/" + fiche);
-        return super.getEntity();
-    }
-
     @Override
     public List<Personne> getByAuditeur(Auditeur auditeur) throws Exception {
         super.setPath("getByAuditeur/" + auditeur);
@@ -106,4 +89,32 @@ public class PersonneServiceImpl extends ClientRest<Personne> implements Personn
         super.setPath("getByLogin/" + login);
         return super.getEntity();
     }
+
+    @Override
+    public List<Personne> getByPoste(Poste poste) throws Exception {
+        super.setPath("getByPoste/" + poste);
+        return super.getEntitys();
+
+    }
+
+    @Override
+    public List<Personne> getByAudit(Audit audit) throws Exception {
+        super.setPath("getByAudit/" + audit);
+        return super.getEntitys();
+    }
 }
+
+/*@Override
+ public Personne[] sort() throws Exception {
+ Personne[] personnes = this.getAll().toArray(new Personne[0]);
+ //Arrays.sort(personnes);
+ //Comparat cmp = new ComparatorByAge();
+ sort trieuse = MetierFactory.getSortService();
+ trieuse.sort(personnes, cmp);
+ return personnes;
+ }*/
+/*@Override
+ public Personne getByFiche(Fiche fiche) throws Exception {
+ super.setPath("getByFiche/" + fiche);
+ return super.getEntity();
+ }*/

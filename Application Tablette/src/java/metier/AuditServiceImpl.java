@@ -12,6 +12,7 @@ import metier.entity.Poste;
 import java.util.Date;
 import lml.rest.client.ClientRest;
 import java.util.List;
+import metier.entity.Modele;
 
 /**
  *
@@ -27,7 +28,7 @@ public class AuditServiceImpl extends ClientRest<Audit> implements AuditService 
 
     @Override
     public List<Audit> getByAgent(Agent agent) throws Exception {
-        super.setPath("getbyAgent/" + agent);
+        super.setPath("getByAgent/" + agent);
         return super.getEntitys();
     }
 
@@ -76,14 +77,26 @@ public class AuditServiceImpl extends ClientRest<Audit> implements AuditService 
 
     @Override
     public List<Audit> getByDate(Date date) throws Exception {
-        super.setPath("getbyDate/" + date);
+        super.setPath("getByDate/" + date);
         return super.getEntitys();
     }
 
     @Override
     public List<Audit> getByPoste(Poste poste) throws Exception {
-        super.setPath("getbyPoste/" + poste);
+        super.setPath("getByPoste/" + poste);
         return super.getEntitys();
+    }
+
+    @Override
+    public List<Audit> getByModele(Modele modele) throws Exception {
+        super.setPath("getByModele/" + modele);
+        return super.getEntitys();
+    }
+
+    @Override
+    public Audit getByTitre(String titre) throws Exception {
+        super.setPath("getByTitre/" + titre);
+        return super.getEntity();
     }
 
 }

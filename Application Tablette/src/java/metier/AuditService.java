@@ -12,6 +12,7 @@ import metier.entity.Poste;
 import java.util.Date;
 import java.util.List;
 import lml.persistence.CrudService;
+import metier.entity.Modele;
 
 /**
  *
@@ -26,4 +27,8 @@ public interface AuditService extends CrudService<Audit> {
     public List<Audit> getByDate(Date date) throws Exception;
 
     public List<Audit> getByPoste(Poste poste) throws Exception;
+
+    public List<Audit> getByModele(Modele modele) throws Exception;
+
+    public Audit getByTitre(String titre) throws Exception;
 }

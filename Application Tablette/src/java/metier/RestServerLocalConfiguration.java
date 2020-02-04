@@ -40,6 +40,6 @@ public class RestServerLocalConfiguration extends RestServerConfig {
     }
 
     public RestServerLocalConfiguration() {
-        super(url, "Projet Audit", "rest");
+        super(url, "Projet_Audit", "rest");
     }
 }
